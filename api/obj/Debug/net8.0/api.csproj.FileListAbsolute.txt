@@ -31,3 +31,4 @@ C:\Users\Crist\OneDrive\Skrivbord\Utvecklare\C#\ByteBook\api\obj\Debug\net8.0\re
 C:\Users\Crist\OneDrive\Skrivbord\Utvecklare\C#\ByteBook\api\obj\Debug\net8.0\api.pdb
 C:\Users\Crist\OneDrive\Skrivbord\Utvecklare\C#\ByteBook\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Users\Crist\OneDrive\Skrivbord\Utvecklare\C#\ByteBook\api\obj\Debug\net8.0\ref\api.dll
+C:\Users\Crist\OneDrive\Skrivbord\Utvecklare\C#\ByteBook\api\obj\Debug\net8.0\api.sourcelink.json
