@@ -18,6 +18,7 @@ namespace api.Models
         public string Industry { get; set; } = string.Empty;
         public long MarketCap { get; set; }
 
+
         // Primary Key # Links together the Stock to the Comment table - 1 to Many relationship
         public List<Comment> Comments { get; set; } = new List<Comment>();
     }
