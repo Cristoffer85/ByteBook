@@ -50,7 +50,7 @@ namespace api.Controllers
         }
 
         [HttpPut] // Update
-        [Route("{id}")] // Route needed here, because..? Why not just [HttpPut("{id}")]?
+        [Route("{id}")] // Route needed here, because..? Why not just [HttpPut("{id}")]? //
         public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
         {
             var stockModel = _context.Stocks.FirstOrDefault(x => x.Id == id);
@@ -70,6 +70,23 @@ namespace api.Controllers
             _context.SaveChanges();
 
             return Ok(stockModel.ToStockDto());
+        }
+
+        [HttpDelete] // Delete
+        [Route("{id}")] // Same question here as PUT method //
+        public IActionResult Delete([FromRoute] int id)
+        {
+            var stockModel = _context.Stocks.FirstOrDefault(x => x.Id == id);
+
+            if (stockModel == null)
+            {
+                return NotFound();
+            }
+
+            _context.Stocks.Remove(stockModel);
+            _context.SaveChanges();
+
+            return NoContent();
         }
     }
 }
