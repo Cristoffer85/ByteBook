@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Dtos.Stock;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace api.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet] // GetAll
         public IActionResult GetAll()
         {
             var stocks = _context.Stocks.ToList() // ToList() is a method that converts the data into a list
@@ -26,7 +27,7 @@ namespace api.Controllers
             return Ok(stocks);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] // GetById
         public IActionResult GetById([FromRoute] int id)
         {
             var stock = _context.Stocks.Find(id); // Find() is a method that finds the stock by the id
@@ -37,6 +38,15 @@ namespace api.Controllers
             }
 
             return Ok(stock.ToStockDto());
+        }
+
+        [HttpPost] // Create
+        public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
+        {
+            var stockModel = stockDto.ToStockFromCreateDto();   // Maps the stock dto to the model
+            _context.Stocks.Add(stockModel);                    // Adds the stock model to the context, starts tracking the entity
+            _context.SaveChanges();                             // Saves the changes to the context, commits the transaction
+            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
     }
 }
