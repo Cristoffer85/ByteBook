@@ -16,13 +16,14 @@ namespace api.Controllers
     public class StockController : ControllerBase
     {
         private readonly ApplicationDBContext _context; // Makes the stock readonly, so that it cannot be muted
-        private readonly IStockRepository _stockRepo; // Makes the stock readonly, so that it cannot be muted
+        private readonly IStockRepository _stockRepo;   // Makes the stock readonly, so that it cannot be muted
         public StockController(ApplicationDBContext context, IStockRepository stockRepo)
         {
             _stockRepo = stockRepo;
             _context = context;
         }
 
+//-----------------
         [HttpGet]           // GetAll
         public async Task<IActionResult> GetAll() 
         
@@ -39,7 +40,7 @@ namespace api.Controllers
         [HttpGet("{id}")]   // GetById
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var stock = await _context.Stocks.FindAsync(id); // Find() is a method that finds the stock by the id
+            var stock = await _stockRepo.GetByIdAsync(id);
 
             if (stock == null)
             {
@@ -53,47 +54,34 @@ namespace api.Controllers
         public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
         {
             var stockModel = stockDto.ToStockFromCreateDto();   // Maps the stock dto to the model
-            await _context.Stocks.AddAsync(stockModel);                    // Adds the stock model to the context, starts tracking the entity
-            await _context.SaveChangesAsync();                             // Saves the changes to the context, commits the transaction
+            await _stockRepo.CreateAsync(stockModel);           // Creates the stock model
             return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
 
         [HttpPut]           // Update
-        [Route("{id}")] // Route needed here, because..? Why not just [HttpPut("{id}")]? //
+        [Route("{id}")]     // Route needed here, because..? Why not just [HttpPut("{id}")]? //
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
         {
-            var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
+            var stockModel = await _stockRepo.UpdateAsync(id, updateDto);
 
             if (stockModel == null)
             {
                 return NotFound();
             }
-
-            stockModel.Symbol = updateDto.Symbol;
-            stockModel.CompanyName = updateDto.CompanyName;
-            stockModel.Purchase = updateDto.Purchase;
-            stockModel.LastDiv = updateDto.LastDiv;
-            stockModel.Industry = updateDto.Industry;
-            stockModel.MarketCap = updateDto.MarketCap;
-
-            await _context.SaveChangesAsync();
 
             return Ok(stockModel.ToStockDto());
         }
 
         [HttpDelete]        // Delete
-        [Route("{id}")] // Same question here as PUT method //
+        [Route("{id}")]     // Same question here as PUT method //
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
+            var stockModel = await _stockRepo.DeleteAsync(id);
 
             if (stockModel == null)
             {
                 return NotFound();
             }
-
-            _context.Stocks.Remove(stockModel);
-            await _context.SaveChangesAsync();
 
             return NoContent();
         }
