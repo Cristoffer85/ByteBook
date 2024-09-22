@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Stock;
+using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +16,10 @@ namespace api.Controllers
     public class StockController : ControllerBase
     {
         private readonly ApplicationDBContext _context; // Makes the stock readonly, so that it cannot be muted
-        public StockController(ApplicationDBContext context)
+        private readonly IStockRepository _stockRepo; // Makes the stock readonly, so that it cannot be muted
+        public StockController(ApplicationDBContext context, IStockRepository stockRepo)
         {
+            _stockRepo = stockRepo;
             _context = context;
         }
 
@@ -26,7 +29,7 @@ namespace api.Controllers
         // Async = Send the request to the database and wait for response, When await entered the async is used 
         // (= Need eggs for cooking, go to the store and wait for the eggs then continue cooking) Asynchronous is used for speeding up processes of fetching data from etc databases or servers far far away
         {
-            var stocks = await _context.Stocks.ToListAsync();           // ToList() is a method that converts the data into a list
+            var stocks = await _stockRepo.GetAllAsync();           // ToList() is a method that converts the data into a list
             
             var stockDto = stocks.Select(s => s.ToStockDto());          // Select() is a method that selects the stock and maps it to the dto
             
