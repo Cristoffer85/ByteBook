@@ -75,5 +75,11 @@ namespace api.Repository
             await _context.SaveChangesAsync();
             return stockModel;
         }
+
+                            // Checks if a Stock Exists. Returns a bool value if it does or not.
+        public Task<bool> StockExists(int id)
+        {
+            return _context.Stocks.AnyAsync(s => s.Id == id);
+        }
     }
 }
