@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
-    [Route("api/stock")]
-    [ApiController]
+    [Route("api/stock")]        // Defines the route for the controller
+    [ApiController]             // Defines the controller as an API controller
     public class StockController : ControllerBase
     {
         private readonly ApplicationDBContext _context; // Makes the stock readonly, so that it cannot be muted
