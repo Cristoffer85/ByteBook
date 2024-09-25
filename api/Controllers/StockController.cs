@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using api.Data;
+using Microsoft.AspNetCore.Mvc; // Imports of libraries existing in .NET
+using api.Data;                 // Imports of folders existing in project
 using api.Dtos.Stock;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
@@ -25,7 +21,7 @@ namespace api.Controllers
 
 //-----------------
         [HttpGet]               // GetAll
-        public async Task<IActionResult> GetAll() 
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query) 
         
         // Async = Send the request to the database and wait for response, When await entered the async is used 
         // (= Need eggs for cooking, go to the store and wait for the eggs then continue cooking) Asynchronous is used for speeding up processes of fetching data from etc databases or servers far far away
@@ -33,7 +29,7 @@ namespace api.Controllers
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
                 
-            var stocks = await _stockRepo.GetAllAsync();           // ToList() is a method that converts the data into a list
+            var stocks = await _stockRepo.GetAllAsync(query);           // ToList() is a method that converts the data into a list
             
             var stockDto = stocks.Select(s => s.ToStockDto());          // Select() is a method that selects the stock and maps it to the dto
             
@@ -65,7 +61,7 @@ namespace api.Controllers
             var stockModel = stockDto.ToStockFromCreateDto();   // Maps the stock dto to the model
 
             await _stockRepo.CreateAsync(stockModel);           // Creates the stock model
-            
+
             return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
 
