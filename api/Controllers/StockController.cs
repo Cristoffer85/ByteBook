@@ -13,7 +13,7 @@ namespace api.Controllers
 {
     [Route("api/stock")]        // Defines the route for the controller
     [ApiController]             // Defines the controller as an API controller
-    public class StockController : ControllerBase
+    public class StockController : ControllerBase       // Primary Key controller, Stocks
     {
         private readonly ApplicationDBContext _context; // Makes the stock readonly, so that it cannot be muted
         private readonly IStockRepository _stockRepo;   // Makes the stock readonly, so that it cannot be muted
@@ -24,12 +24,15 @@ namespace api.Controllers
         }
 
 //-----------------
-        [HttpGet]           // GetAll
+        [HttpGet]               // GetAll
         public async Task<IActionResult> GetAll() 
         
         // Async = Send the request to the database and wait for response, When await entered the async is used 
         // (= Need eggs for cooking, go to the store and wait for the eggs then continue cooking) Asynchronous is used for speeding up processes of fetching data from etc databases or servers far far away
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             var stocks = await _stockRepo.GetAllAsync();           // ToList() is a method that converts the data into a list
             
             var stockDto = stocks.Select(s => s.ToStockDto());          // Select() is a method that selects the stock and maps it to the dto
@@ -37,9 +40,12 @@ namespace api.Controllers
             return Ok(stocks);
         }
 
-        [HttpGet("{id}")]   // GetById
+        [HttpGet("{id:int}")]   // GetById
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             var stock = await _stockRepo.GetByIdAsync(id);
 
             if (stock == null)
@@ -50,18 +56,26 @@ namespace api.Controllers
             return Ok(stock.ToStockDto());
         }
 
-        [HttpPost]          // Create
+        [HttpPost]              // Create
         public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             var stockModel = stockDto.ToStockFromCreateDto();   // Maps the stock dto to the model
+
             await _stockRepo.CreateAsync(stockModel);           // Creates the stock model
+            
             return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
 
-        [HttpPut]           // Update
-        [Route("{id}")]     // Route needed here, because..? Why not just [HttpPut("{id}")]? //
+        [HttpPut]               // Update
+        [Route("{id:int}")]     // Route needed here, because..? Why not just [HttpPut("{id}")]? //
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             var stockModel = await _stockRepo.UpdateAsync(id, updateDto);
 
             if (stockModel == null)
@@ -72,10 +86,13 @@ namespace api.Controllers
             return Ok(stockModel.ToStockDto());
         }
 
-        [HttpDelete]        // Delete
-        [Route("{id}")]     // Same question here as PUT method //
+        [HttpDelete]            // Delete
+        [Route("{id:int}")]     // Same question here as PUT method //
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             var stockModel = await _stockRepo.DeleteAsync(id);
 
             if (stockModel == null)
