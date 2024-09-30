@@ -9,18 +9,11 @@ namespace api.Controllers
 {
     [Route("api/account")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager) : ControllerBase
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly ITokenService _tokenService;
-        private readonly SignInManager<AppUser> _signInManager;
-
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager)
-        {
-            _userManager = userManager;
-            _tokenService = tokenService;
-            _signInManager = signInManager;
-        }
+        private readonly UserManager<AppUser> _userManager = userManager;
+        private readonly ITokenService _tokenService = tokenService;
+        private readonly SignInManager<AppUser> _signInManager = signInManager;
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
@@ -74,7 +67,7 @@ namespace api.Controllers
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName.Equals(loginDto.Username, StringComparison.CurrentCultureIgnoreCase));
 
             if(user == null) return Unauthorized("Invalid username");
 

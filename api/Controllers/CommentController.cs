@@ -7,18 +7,12 @@ namespace api.Controllers
 {
     [Route("api/comment")]          // Defines the route for the controller
     [ApiController]                 // Defines the controller as an API controller
-    public class CommentController : ControllerBase     // Foreign Key controller, Comments
+    public class CommentController(ICommentRepository commentRepo, IStockRepository stockRepo) : ControllerBase     // Foreign Key controller, Comments
     {
-        private readonly ICommentRepository _commentRepo;
-        private readonly IStockRepository _stockRepo;
+        private readonly ICommentRepository _commentRepo = commentRepo;
+        private readonly IStockRepository _stockRepo = stockRepo;
 
-        public CommentController(ICommentRepository commentRepo, IStockRepository stockRepo)
-        {
-            _commentRepo = commentRepo;
-            _stockRepo = stockRepo;
-        }
-
-//-----------------
+        //-----------------
         [HttpGet]                       // GetAll
         public async Task<IActionResult> GetAll()
         {

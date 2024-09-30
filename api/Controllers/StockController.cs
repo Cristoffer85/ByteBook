@@ -10,17 +10,12 @@ namespace api.Controllers
 {
     [Route("api/stock")]        // Defines the route for the controller
     [ApiController]             // Defines the controller as an API controller
-    public class StockController : ControllerBase       // Primary Key controller, Stocks
+    public class StockController(ApplicationDBContext context, IStockRepository stockRepo) : ControllerBase       // Primary Key controller, Stocks
     {
-        private readonly ApplicationDBContext _context; // Makes the stock readonly, so that it cannot be muted
-        private readonly IStockRepository _stockRepo;   // Makes the stock readonly, so that it cannot be muted
-        public StockController(ApplicationDBContext context, IStockRepository stockRepo)
-        {
-            _stockRepo = stockRepo;
-            _context = context;
-        }
-
-//-----------------
+        private readonly ApplicationDBContext _context = context; // Makes the stock readonly, so that it cannot be muted
+        private readonly IStockRepository _stockRepo = stockRepo;   // Makes the stock readonly, so that it cannot be muted
+        
+        //-----------------
         [HttpGet]               // GetAll
         [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query) 

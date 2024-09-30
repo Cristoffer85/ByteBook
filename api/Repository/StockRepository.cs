@@ -7,16 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
-    public class StockRepository : IStockRepository
+    public class StockRepository(ApplicationDBContext context) : IStockRepository
     {
-        private readonly ApplicationDBContext _context;
-        public StockRepository(ApplicationDBContext context)
-        {
-            _context = context;
-        }
+        private readonly ApplicationDBContext _context = context;
 
-//-----------------
-                            // GetAll
+        //-----------------
+        // GetAll
         public async Task<List<Stock>> GetAllAsync(QueryObject query)
         {
             var stocks = _context.Stocks.Include(c => c.Comments).AsQueryable();

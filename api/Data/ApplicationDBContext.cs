@@ -6,14 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Data
 {
-    public class ApplicationDBContext : IdentityDbContext<AppUser>
+    public class ApplicationDBContext(DbContextOptions dbContextOptions) : IdentityDbContext<AppUser>(dbContextOptions)
     {
-        public ApplicationDBContext(DbContextOptions dbContextOptions)
-        : base(dbContextOptions)
-        {
-            
-        }
-
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
@@ -21,19 +15,17 @@ namespace api.Data
         {
             base.OnModelCreating(builder);
 
-            List<IdentityRole> roles = new List<IdentityRole>
-            {
-                new IdentityRole 
-                { 
+            List<IdentityRole> roles =
+            [
+                new() {
                     Name = "Admin", 
                     NormalizedName = "ADMIN" 
                 },
-                new IdentityRole 
-                { 
+                new() {
                     Name = "User", 
                     NormalizedName = "USER" 
                 }
-            };
+            ];
             builder.Entity<IdentityRole>().HasData(roles);
         }
     }
