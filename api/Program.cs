@@ -2,6 +2,7 @@ using api.Data;
 using api.Interfaces;
 using api.Models;
 using api.Repository;
+using api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options => {
 })
 .AddEntityFrameworkStores<ApplicationDBContext>();
 
+// Add services for JWT
 builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme =
     options.DefaultChallengeScheme =
@@ -64,6 +66,7 @@ builder.Services.AddAuthentication(options => {
 // Start services for Interfaces and Repositories (Stock and Comments)
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 // Builds the app
 var app = builder.Build();
