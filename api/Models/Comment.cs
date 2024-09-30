@@ -1,6 +1,9 @@
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace api.Models
 {
+    [Table("Comments")] // Only for aesthetic purpose, not really needed the tables are autonamed in the database anyway
     public class Comment
     {
         public int Id { get; set; }
