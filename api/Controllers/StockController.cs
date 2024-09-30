@@ -4,6 +4,7 @@ using api.Dtos.Stock;
 using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers
 {
@@ -21,6 +22,7 @@ namespace api.Controllers
 
 //-----------------
         [HttpGet]               // GetAll
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query) 
         
         // Async = Send the request to the database and wait for response, When await entered the async is used 
