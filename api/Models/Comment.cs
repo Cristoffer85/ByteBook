@@ -15,6 +15,8 @@ namespace api.Models
         // Foreign Key # Links together the Stock to the Comment table - 1 to Many relationship
         public int? StockId { get; set; }
         public Stock? Stock { get; set; }
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
         // ---------------------------------------------
     }
 }
