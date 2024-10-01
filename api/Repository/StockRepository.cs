@@ -91,10 +91,21 @@ namespace api.Repository
             return stockModel;
         }
 
+                            
+                            
+                            
+                            
+                            
+                            
                             // Checks if a Stock Exists. Returns a bool value if it does or not.
         public Task<bool> StockExists(int id)
         {
             return _context.Stocks.AnyAsync(s => s.Id == id);
+        }
+                            // GetBySymbol, for creating Portfolio in PortfolioRepository
+        public async Task<Stock?> GetBySymbolAsync(string symbol)
+        {
+            return await _context.Stocks.FirstOrDefaultAsync(s => s.Symbol == symbol);
         }
     }
 }
