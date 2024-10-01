@@ -90,10 +90,11 @@ builder.Services.AddAuthentication(options => {
     };
 });
 
-// Start services for Interfaces and Repositories (Stock and Comments)
+// Start services for various Interfaces and Repositories
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 
 // Builds the app
 var app = builder.Build();

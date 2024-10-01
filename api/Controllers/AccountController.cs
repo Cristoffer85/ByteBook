@@ -67,7 +67,7 @@ namespace api.Controllers
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName.Equals(loginDto.Username, StringComparison.CurrentCultureIgnoreCase));
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower()); // NOTE: Do not try to refactor this line according to Intellicodes suggestion, it will throw an error where it cannot be translated
 
             if(user == null) return Unauthorized("Invalid username");
 
