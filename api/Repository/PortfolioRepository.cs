@@ -9,13 +9,7 @@ namespace api.Repository
     {
         private readonly ApplicationDBContext _context = context;
 
-        public async Task<Portfolio> CreateAsync(Portfolio portfolio)
-        {
-            await _context.Portfolios.AddAsync(portfolio);
-            await _context.SaveChangesAsync();
-            return portfolio;
-        }
-
+        // Read
         public async Task<List<Stock>> GetUserPortfolio(AppUser user)
         {
             return await _context.Portfolios.Where(u => u.AppUserId == user.Id)
@@ -29,6 +23,29 @@ namespace api.Repository
                 Industry = stock.Stock.Industry,
                 MarketCap = stock.Stock.MarketCap
             }).ToListAsync();
+        }
+
+        // Create
+        public async Task<Portfolio> CreateAsync(Portfolio portfolio)
+        {
+            await _context.Portfolios.AddAsync(portfolio);
+            await _context.SaveChangesAsync();
+            return portfolio;
+        }
+
+        // Delete
+        public async Task<Portfolio> DeletePortfolio(AppUser appUser, string symbol)
+        {
+            var portfolioModel = await _context.Portfolios.FirstOrDefaultAsync(x => x.AppUserId == appUser.Id && x.Stock.Symbol.ToLower() == symbol.ToLower());
+
+            if (portfolioModel == null)
+            {
+                return null;
+            }
+            
+            _context.Portfolios.Remove(portfolioModel);
+            await _context.SaveChangesAsync();
+            return portfolioModel;
         }
     }
 }
