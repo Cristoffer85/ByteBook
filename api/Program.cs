@@ -110,6 +110,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Enable CORS = Cross-Origin to be able to access the API from React
+app.UseCors(x => x
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    //.WithOrigins("http://localhost:3000")
+    .AllowCredentials()
+    .SetIsOriginAllowed(origin => true)
+);
+
 app.UseAuthentication();
 app.UseAuthorization();
 

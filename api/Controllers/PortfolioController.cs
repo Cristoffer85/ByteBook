@@ -10,19 +10,12 @@ namespace api.Controllers
 {
     [Route("api/portfolio")]
     [ApiController]
-    public class PortfolioController : ControllerBase
+    public class PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepo, IPortfolioRepository portfolioRepo, IMFPService fmpService) : ControllerBase
     {
-        private readonly UserManager<AppUser> _userManager;
-        private readonly IStockRepository _stockRepo;
-        private readonly IPortfolioRepository _portfolioRepo;
-        private readonly IMFPService _fmpService;
-        public PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepo, IPortfolioRepository portfolioRepo, IMFPService fmpService)
-        {
-            _userManager = userManager;
-            _stockRepo = stockRepo;
-            _portfolioRepo = portfolioRepo;
-            _fmpService = fmpService;
-        }
+        private readonly UserManager<AppUser> _userManager = userManager;
+        private readonly IStockRepository _stockRepo = stockRepo;
+        private readonly IPortfolioRepository _portfolioRepo = portfolioRepo;
+        private readonly IMFPService _fmpService = fmpService;
 
         [HttpGet]       // GetAll
         [Authorize]
