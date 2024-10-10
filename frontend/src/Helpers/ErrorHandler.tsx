@@ -5,7 +5,7 @@ export const handleError = (error: any) => {
     if(axios.isAxiosError(error)) {
         var err = error.response;
         if (Array.isArray(err?.data.errors)) {
-            for(let val of err.data.errors) {              // Should maybe be err?.data.errors to avoid null pointer exception, try if that error occurs
+            for(let val of err?.data.errors) {
                 toast.warning(val.description);
             }
         } else if (typeof err?.data.errors === "object") {
