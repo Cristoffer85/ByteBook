@@ -14,7 +14,7 @@ const Card: React.FC<Props> = ({
   return (
     <div className="card">
       <img
-        src="https://picsum.photos/id/237/200/300"
+        src="https://picsum.photos/seed/picsum/200/300"
         alt="Image"
       />
       <div className="details">
