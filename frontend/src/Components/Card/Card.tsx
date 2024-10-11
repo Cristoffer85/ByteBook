@@ -1,4 +1,5 @@
 import { CompanySearch } from '../../company';
+import AddPortfolio from '../Portfolio/AddPortfolio/AddPortfolio';
 import './Card.css'
 
 interface Props {
@@ -21,6 +22,7 @@ const Card: React.FC<Props> = ({
       <p className="info">
         {searchResult.exchangeShortName} - {searchResult.stockExchange}
       </p>
+      <AddPortfolio />
     </div>
   );
 };
