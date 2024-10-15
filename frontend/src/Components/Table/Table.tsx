@@ -1,7 +1,4 @@
-import React from 'react'
 import { testIncomeStatementData } from './testData'
-import { config } from 'dotenv';
-import { render } from '@testing-library/react';
 
 const data = testIncomeStatementData;
 
