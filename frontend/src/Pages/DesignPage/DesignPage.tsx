@@ -19,7 +19,7 @@ const DesignPage = (props: Props) => {
             This is ByteBooks Design Page. This is where we will house various design aspects for the application.
         </h2>
         <RatioList data={testIncomeStatementData} config={tableConfig}/>
-        <Table />
+        <Table data={testIncomeStatementData} config={tableConfig}/>
     </>
   )
 }
