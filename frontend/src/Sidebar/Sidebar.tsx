@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
-import { FaHome } from 'react-icons/fa'
+import { ImProfile } from "react-icons/im";
+import { FaBalanceScale, FaHome } from 'react-icons/fa'
+import { GiReceiveMoney } from "react-icons/gi";
 
 type Props = {}
 
@@ -18,20 +20,32 @@ const Sidebar = (props: Props) => {
             <div className="flex bg-white flex-col items-stretch opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full">
 
               <div className="md:flex-col md:min-w-full flex flex-col list-none">
+                
+        {/* Company Profile*/}
                 <Link 
                     to='company-profile' 
                     className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline"
                 >
-                <FaHome />
+                <ImProfile />
                 <h6 className='ml-3'>Company Profile</h6>
                 </Link>
 
+        {/* Income Statement*/}
                 <Link 
                     to='income-statement' 
                     className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline"
                 >
-                <FaHome />
+                <GiReceiveMoney />
                 <h6 className='ml-3'>Income Statement</h6>
+                </Link>
+
+        {/* Balance Sheet*/}
+                <Link 
+                    to='balance-sheet' 
+                    className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline"
+                >
+                <FaBalanceScale />
+                <h6 className='ml-3'>Balance Sheet</h6>
                 </Link>
               </div>
 
