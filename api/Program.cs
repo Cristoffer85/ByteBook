@@ -12,12 +12,11 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
-
-// Add services for API versioning
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-// Swagger documentation, and generation (with JWT options) added
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
@@ -41,42 +40,41 @@ builder.Services.AddSwaggerGen(option =>
                     Id="Bearer"
                 }
             },
-            Array.Empty<string>()
+            new string[]{}
         }
     });
 });
 
-// Add services for JSON serialization
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 
-// Add services for Database
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-// Add services for Identity/Authentication/Authorization/JWT
-builder.Services.AddIdentity<AppUser, IdentityRole>(options => {
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
     options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequiredLength = 8;
+    options.Password.RequiredLength = 12;
 })
 .AddEntityFrameworkStores<ApplicationDBContext>();
 
-// Add services for JWT
-builder.Services.AddAuthentication(options => {
+builder.Services.AddAuthentication(options =>
+{
     options.DefaultAuthenticateScheme =
     options.DefaultChallengeScheme =
     options.DefaultForbidScheme =
     options.DefaultScheme =
     options.DefaultSignInScheme =
     options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options => {
+}).AddJwtBearer(options =>
+{
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -90,7 +88,7 @@ builder.Services.AddAuthentication(options => {
     };
 });
 
-// Start services for various Interfaces and Repositories
+
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -98,7 +96,7 @@ builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 builder.Services.AddScoped<IMFPService, FMPService>();
 builder.Services.AddHttpClient<IMFPService, FMPService>();
 
-// Builds the app
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -110,19 +108,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Enable CORS = Cross-Origin to be able to access the API from React
 app.UseCors(x => x
-    .AllowAnyHeader()
-    .AllowAnyMethod()
-    //.WithOrigins("http://localhost:3000")
-    .AllowCredentials()
-    .SetIsOriginAllowed(origin => true)
-);
+     .AllowAnyMethod()
+     .AllowAnyHeader()
+     .AllowCredentials()
+      //.WithOrigins("https://localhost:44351))
+      .SetIsOriginAllowed(origin => true));
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers(); // To make Swagger work, otherwise HttpsRedirect error will appear
+app.MapControllers();
 
-// Run the app
 app.Run();

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { CompanyBalanceSheet, CompanyCashFlow, CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch, CompanyTenK } from "./company";
 
-interface SearchResponse {
+interface SearchResponse {            // External API-class
     data: CompanySearch[];
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CompanyBalanceSheet } from '../../company';
 import { useOutletContext } from 'react-router';
 import { getBalanceSheet } from '../../api';
@@ -85,7 +85,7 @@ const BalanceSheet = (props: Props) => {
             setCompanyData(value?.data[0]);
         }
         getCompanyData();
-    }, [])
+    })
   return (
     <>{companyData ? (
         <RatioList config={config} data={companyData}/>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ImProfile } from "react-icons/im";
-import { FaBalanceScale, FaHome } from 'react-icons/fa'
+import { FaBalanceScale } from 'react-icons/fa'
 import { GiReceiveMoney } from "react-icons/gi";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 
