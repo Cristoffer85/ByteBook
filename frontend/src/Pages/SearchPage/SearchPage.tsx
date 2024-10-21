@@ -4,6 +4,7 @@ import { searchCompanies } from "../../api";
 import Search from "../../Components/Search/Search";
 import ListPortfolio from "../../Components/Portfolio/ListPortfolio/ListPortfolio";
 import CardList from "../../Components/CardList/CardList";
+import { toast } from "react-toastify";
 
 interface Props {}
 
