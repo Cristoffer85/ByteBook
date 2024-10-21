@@ -30,5 +30,9 @@ Potential issues: Can cause 401 if not variable is included rightly
 
 -------------------------------------------------
 
-**
+** Naming of Project folders: DONT (Repeat Dont!) Name project folders with special characters (#, ++, ..etc) 
+- This will cause errors and trouble for the application/VS Code finding the right modules and folders.
+- Renaming them to pure [English] characters made the problems disappear and all node_modules etc are found again.
+- Also, dont have the Project folder in OneDrive/ This might also cause some syncing issues.
+
 
