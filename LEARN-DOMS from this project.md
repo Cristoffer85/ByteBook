@@ -24,7 +24,11 @@ Potential issues: Can cause 401 if not variable is included rightly
 
 -------------------------------------------------
 
+** Toastify, is super-nice! The thing that makes Popup-AutomaticallyDisappearing-Notification-Windows-WithCountDownBar
+- If used correctly in App.tsx and imported, one can use it in many different forms in the application, like "toast.success" etc.
+= Supernice and im actually quite in awe.
+
+-------------------------------------------------
+
 **
-
-
 
