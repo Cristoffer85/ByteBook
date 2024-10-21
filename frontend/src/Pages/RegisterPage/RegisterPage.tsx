@@ -40,6 +40,7 @@ const RegisterPage = (props: Props) => {
               className="space-y-4 md:space-y-6"
               onSubmit={handleSubmit(handleRegister)}
             >
+              {/*Email*/}
               <div>
                 <label
                   htmlFor="email"
@@ -60,6 +61,7 @@ const RegisterPage = (props: Props) => {
                   ""
                 )}
               </div>
+              {/*Username*/}
               <div>
                 <label
                   htmlFor="username"
@@ -80,6 +82,7 @@ const RegisterPage = (props: Props) => {
                   ""
                 )}
               </div>
+              {/*Password*/}
               <div>
                 <label
                   htmlFor="password"
@@ -100,6 +103,7 @@ const RegisterPage = (props: Props) => {
                   ""
                 )}
               </div>
+              {/*Register button*/}
               <button
                 type="submit"
                 className="w-full text-white bg-lightGreen hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
