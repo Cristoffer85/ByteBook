@@ -13,7 +13,7 @@ const Hero = (props: Props) => {
           Coding, humanly.
         </h1>
         <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">
-          Coding assistance for and by humans. Get help with your coding problems - the same time social fellowship is earned.
+          Coding assistance for and (mostly) by humans. Get help with your coding problems - the same time social fellowship is earned.
           <br />
           <br />
           Coders for Kindness.
