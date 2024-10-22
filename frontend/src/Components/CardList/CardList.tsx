@@ -19,7 +19,7 @@ const CardList : React.FC<Props> = ({searchResults, onPortfolioCreate}: Props) :
     })
   ) : (
       <p className="mb-3 mt-3 text-xl font-semibold text-center md:text-xl">
-        No results!
+        {/*No results!           <--------- Add this line if want this text to be visible even when no search has been comitted*/   }
       </p>
     )}
   </>
