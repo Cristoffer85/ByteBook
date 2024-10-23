@@ -12,6 +12,12 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import ProtectedRoute from "./ProtectedRoute";
 
+{/* To add a protectedRoute/HOC to any element/route, do:
+
+{path: "search", element: <ProtectedRoute><SearchPage /></ProtectedRoute>},    
+
+*/}
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -20,11 +26,11 @@ export const router = createBrowserRouter([
             {path: "", element: <HomePage />},
             {path: "login", element: <LoginPage />},
             {path: "register", element: <RegisterPage />},
-            {path: "search", element: <ProtectedRoute><SearchPage /></ProtectedRoute>},
+            {path: "search", element: <SearchPage />},
             {path: "design-guide", element: <DesignPage />},
             {
                 path: "company/:ticker", 
-                element: <ProtectedRoute><CompanyPage /></ProtectedRoute>, 
+                element: <CompanyPage />, 
                 children: [
                     { path: "company-profile", element: <CompanyProfile /> },
                     { path: "income-statement", element: <IncomeStatement /> },
