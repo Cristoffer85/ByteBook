@@ -52,7 +52,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        [Route("{symbol:alpha}")]     // Create
+        [Route("{symbol:alpha}")]       // Create
         public async Task<IActionResult> Create([FromRoute] string symbol, CreateCommentDto commentDto)
         {
             if(!ModelState.IsValid)

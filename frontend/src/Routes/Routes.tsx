@@ -11,6 +11,7 @@ import CashFlowStatement from "../Components/CashFlowStatement/CashFlowStatement
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import ProtectedRoute from "./ProtectedRoute";
+import HeroPage from "../Pages/HeroPage/HeroPage";
 
 {/* To add a protectedRoute/HOC to any element/route, do:
 
@@ -23,8 +24,9 @@ export const router = createBrowserRouter([
         path: "/",
         element: <App />,
         children: [
-            {path: "", element: <HomePage />},
+            {path: "", element: <HeroPage />},
             {path: "login", element: <LoginPage />},
+            {path: "home", element: <HomePage />},
             {path: "register", element: <RegisterPage />},
             {path: "search", element: <SearchPage />},
             {path: "design-guide", element: <DesignPage />},
