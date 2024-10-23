@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { CompanyProfile } from '../../company';
 import { getCompanyProfile } from '../../api';
-import Sidebar from '../../Sidebar/Sidebar';
+import FinanceSidebar from '../../Components/FinanceSidebar/FinanceSidebar';
 import CompanyDashboard from '../../Components/CompanyDashboard/CompanyDashboard';
 import Tile from '../../Components/Tile/Tile';
 import Spinner from '../../Components/Spinner/Spinner';
@@ -26,7 +26,7 @@ const CompanyPage = (props: Props) => {
       {company ? (
         <div className="w-full relative flex ct-docs-disable-sidebar-content overflow-x-hidden">
 
-        <Sidebar />
+        <FinanceSidebar />
         <CompanyDashboard ticker={ticker!}>
           <Tile title="Company Name" subTitle={company.companyName}/>
           <Tile title="Price" subTitle={"$" + company.price.toString()}/>

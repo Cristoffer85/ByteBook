@@ -6,7 +6,7 @@ import { FaMoneyCheckDollar } from "react-icons/fa6";
 
 type Props = {}
 
-const Sidebar = (props: Props) => {
+const MainSideBar = (props: Props) => {
   return (
         <nav className="block py-4 px-6 top-0 bottom-0 w-64 bg-white shadow-xl left-0 absolute flex-row flex-nowrap md:z-10 z-9999 transition-all duration-300 ease-in-out transform md:translate-x-0 -translate-x-full">
 
@@ -22,40 +22,40 @@ const Sidebar = (props: Props) => {
 
               <div className="md:flex-col md:min-w-full flex flex-col list-none">
                 
-        {/* Company Profile*/}
+        {/* Forum */}
                 <Link 
                     to='company-profile' 
                     className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline"
                 >
                 <ImProfile />
-                <h6 className='ml-3'>Company Profile</h6>
+                <h6 className='ml-3'>Forum</h6>
                 </Link>
 
-        {/* Income Statement*/}
+        {/* Skibidi 1 */}
                 <Link 
                     to='income-statement' 
                     className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline"
                 >
                 <GiReceiveMoney />
-                <h6 className='ml-3'>Income Statement</h6>
+                <h6 className='ml-3'>Skibidi 1</h6>
                 </Link>
 
-        {/* Balance Sheet*/}
+        {/* Skibidi 2 */}
                 <Link 
                     to='balance-sheet' 
                     className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline"
                 >
                 <FaBalanceScale />
-                <h6 className='ml-3'>Balance Sheet</h6>
+                <h6 className='ml-3'>Skibidi 2</h6>
                 </Link>
 
-        {/* Cash Flow Statement*/}
+        {/* Skibidi 3 */}
                 <Link 
                     to='cashflow-statement' 
                     className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline"
                 >
                 <FaMoneyCheckDollar />
-                <h6 className='ml-3'>Cashflow Statement</h6>
+                <h6 className='ml-3'>Skibidi 3</h6>
                 </Link>
                 
               </div>
@@ -68,4 +68,4 @@ const Sidebar = (props: Props) => {
   )
 }
 
-export default Sidebar
+export default MainSideBar
