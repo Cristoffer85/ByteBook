@@ -35,4 +35,17 @@ Potential issues: Can cause 401 if not variable is included rightly
 - Renaming them to pure [English] characters made the problems disappear and all node_modules etc are found again.
 - Also, dont have the Project folder in OneDrive/ This might also cause some syncing issues.
 
+-------------------------------------------------
+
+** All external packages (like npm toastify, spinners etc) installed in this project are located in the
+- Frontend/React: package.json, under dependencies. All beautifully listed there.
+- Backend/.NET: In NUGET (Extension installed via plugin) check installed tab - all listed there
+
+- Extensions installed for this project:
+    * Nuget Gallery (search for packages install to C#/.NET)
+    * Roslynator (Code analyzers, refactoring, fixes etc)
+    * ES7+ React/Redux/React-Native snippets (Pre-written start snippets for React classes - one used here = tsrafce)
+    * .NET install tool
+    * .NET extension pack
+
 
