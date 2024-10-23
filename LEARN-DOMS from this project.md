@@ -48,4 +48,7 @@ Potential issues: Can cause 401 if not variable is included rightly
     * .NET install tool
     * .NET extension pack
 
+- Added in Program.cs and code:
+    * Swagger (opens up automatically and configured when running the server)
+
 
