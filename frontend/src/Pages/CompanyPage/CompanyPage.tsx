@@ -7,6 +7,7 @@ import Tile from '../../Components/Tile/Tile';
 import Spinner from '../../Components/Spinner/Spinner';
 import TenKFinder from '../../Components/TenKFinder/TenKFinder';
 import FinanceSidebar from '../../Components/FinanceSidebar/FinanceSidebar';
+import MainSidebar from '../../Components/MainSidebar/MainSidebar';
 
 interface Props {}
 
@@ -25,8 +26,7 @@ const CompanyPage = (props: Props) => {
     <>
       {company ? (
         <div className="w-full relative flex ct-docs-disable-sidebar-content overflow-x-hidden">
-
-        <FinanceSidebar />
+        <MainSidebar />
         <CompanyDashboard ticker={ticker!}>
           <Tile title="Company Name" subTitle={company.companyName}/>
           <Tile title="Price" subTitle={"$" + company.price.toString()}/>
@@ -34,7 +34,7 @@ const CompanyPage = (props: Props) => {
           <Tile title="DCF" subTitle={"$" + company.dcf.toString()}/>
           <TenKFinder ticker={company.symbol}/>
           <p className="bg-white shadow rounded text-medium text-gray-900 p-3 mt-1 m-4">
-            {company.description} {/* Description of the company. Can be removed/altered etc since its quite long and take up much space on the page */}
+           {/* {company.description} { Description of the company. Can be removed/altered etc since its quite long and take up much space on the page */}
             </p>
         </CompanyDashboard>
 

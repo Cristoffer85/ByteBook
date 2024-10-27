@@ -2,7 +2,7 @@ import axios from "axios";
 import { CommentGet, CommentPost } from "../Models/Comment";
 import { handleError } from "../Helpers/ErrorHandler";
 
-const api ="http://localhost:5167/api/comment/";
+const api ="http://localhost:5167/api/comment/";         // ONLY string/URL used from backend in order be able connect with it regarding Comments CREATE and READ
 
 export const commentPostAPI = async (title: string, content: string, symbol: string) => {
     try {

@@ -2,7 +2,7 @@ import axios from "axios";
 import { PortfolioGet, PortfolioPost } from "../Models/Portfolio";
 import { handleError } from "../Helpers/ErrorHandler";
 
-const api = "http://localhost:5167/api/portfolio/";
+const api = "http://localhost:5167/api/portfolio/";                // ONLY string/URL used from backend in order be able connect with it regarding Portfolio CREATE, READ and DELETE
 
 export const portfolioAddAPI = async (symbol: string) => {
     try {
@@ -13,18 +13,18 @@ export const portfolioAddAPI = async (symbol: string) => {
     }
 }
 
-export const portfolioDeleteAPI = async (symbol: string) => {
+export const portfolioGetAPI = async () => {
     try {
-        const data = await axios.delete<PortfolioPost>(api + `?symbol=${symbol}`);
+        const data = await axios.get<PortfolioGet[]>(api);
         return data;
     } catch (error) {
         handleError(error);
     }
 }
 
-export const portfolioGetAPI = async () => {
+export const portfolioDeleteAPI = async (symbol: string) => {
     try {
-        const data = await axios.get<PortfolioGet[]>(api);
+        const data = await axios.delete<PortfolioPost>(api + `?symbol=${symbol}`);
         return data;
     } catch (error) {
         handleError(error);
