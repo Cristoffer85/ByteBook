@@ -12,6 +12,9 @@ import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import ProtectedRoute from "./ProtectedRoute";
 import HeroPage from "../Pages/HeroPage/HeroPage";
 import FinancePage from "../Pages/FinancePage/FinancePage";
+import ContactPage from "../Pages/ContactPage/ContactPage";
+import ForumPage from "../Pages/ForumPage/ForumPage";
+import ChatPage from "../Pages/ChatPage/ChatPage";
 
 export const router = createBrowserRouter([
     {
@@ -19,10 +22,13 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             {path: "", element: <HeroPage />},
-            {path: "login", element: <LoginPage />},
             {path: "home", element: <HomePage />},
+            {path: "login", element: <LoginPage />},
             {path: "register", element: <RegisterPage />},
+            {path: "forum", element: <ForumPage />},
+            {path: "chat", element: <ChatPage />},
             {path: "finance", element: <ProtectedRoute><FinancePage /></ProtectedRoute>},
+            {path: "contact", element: <ContactPage />},
             {path: "design-guide", element: <DesignPage />},
             {
                 path: "company/:ticker", 

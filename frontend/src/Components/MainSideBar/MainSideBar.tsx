@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../Context/useAuth';
-import { IoHomeOutline } from "react-icons/io5";
+import { IoChatbubblesOutline, IoHomeOutline } from "react-icons/io5";
 import { LiaForumbee } from "react-icons/lia";
 import { AiOutlineStock } from "react-icons/ai";
 
@@ -29,6 +29,13 @@ const MainSidebar = (props: Props) => {
               <i className="fas fa-info"></i>
               <h6 className='ml-3'>Forum</h6>
             </Link>
+            {/* Chat */}
+            <Link to='/chat' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+              <IoChatbubblesOutline />
+              <i className="fas fa-info"></i>
+              <h6 className='ml-3'>Chat</h6>
+            </Link>
+
             {/* Blank Row */}
             <div className="h-6"></div>
 
