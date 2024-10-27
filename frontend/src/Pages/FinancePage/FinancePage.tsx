@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 interface Props {}
 
-const SearchPage = (props: Props) => {  
+const FinancePage = (props: Props) => {  
   const [search, setSearch] = useState<string>("");
   const [portfolioValues, setPortfolioValues] = useState<PortfolioGet[] | null>([]);
   const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
@@ -80,4 +80,4 @@ const SearchPage = (props: Props) => {
 </div>
 )}
 
-export default SearchPage
+export default FinancePage

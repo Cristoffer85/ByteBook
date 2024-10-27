@@ -19,18 +19,22 @@ const MainSidebar = (props: Props) => {
       <div className="flex-col min-h-full px-0 flex flex-wrap items-center justify-between w-full mx-auto overflow-y-auto overflow-x-hidden">
         <div className="flex bg-white flex-col items-stretch opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full">
           <div className="md:flex-col md:min-w-full flex flex-col list-none">
+            {/* Home */}
             <Link to='home' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
               <i className="fas fa-home"></i>
               <h6 className='ml-3'>Home</h6>
             </Link>
+            {/* About */}
             <Link to='about' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
               <i className="fas fa-info"></i>
               <h6 className='ml-3'>About</h6>
             </Link>
+            {/* Services */}
             <Link to='services' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
               <i className="fas fa-concierge-bell"></i>
               <h6 className='ml-3'>Services</h6>
             </Link>
+            {/* Contact */}
             <Link to='contact' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
               <i className="fas fa-envelope"></i>
               <h6 className='ml-3'>Contact</h6>
@@ -38,7 +42,8 @@ const MainSidebar = (props: Props) => {
 
             {isLoggedIn() ? (
                 <>
-                    <Link to='/search' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+                    {/* Finance */}
+                    <Link to='/finance' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
                     <i className="fas fa-home"></i>
                     <h6 className='ml-3'>Finance</h6>
                     </Link>

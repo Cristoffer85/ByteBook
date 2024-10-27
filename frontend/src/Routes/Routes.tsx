@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../Pages/HomePage/HomePage";
 import App from "../App";
-import SearchPage from "../Pages/SearchPage/SearchPage";
 import CompanyPage from "../Pages/CompanyPage/CompanyPage";
 import IncomeStatement from "../Components/IncomeStatement/IncomeStatement";
 import CompanyProfile from "../Components/CompanyProfile/CompanyProfile";
@@ -12,6 +11,7 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import RegisterPage from "../Pages/RegisterPage/RegisterPage";
 import ProtectedRoute from "./ProtectedRoute";
 import HeroPage from "../Pages/HeroPage/HeroPage";
+import FinancePage from "../Pages/FinancePage/FinancePage";
 
 {/* To add a protectedRoute/HOC to any element/route, do:
 
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             {path: "login", element: <LoginPage />},
             {path: "home", element: <HomePage />},
             {path: "register", element: <RegisterPage />},
-            {path: "search", element: <SearchPage />},
+            {path: "finance", element: <FinancePage />},
             {path: "design-guide", element: <DesignPage />},
             {
                 path: "company/:ticker", 
