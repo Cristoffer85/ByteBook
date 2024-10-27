@@ -6,7 +6,7 @@ import { AiOutlineStock } from "react-icons/ai";
 
 type Props = {}
 
-const MainSidebar = (props: Props) => {
+const Sidebar = (props: Props) => {
     const { isLoggedIn } = useAuth();
 
   return (
@@ -58,4 +58,4 @@ const MainSidebar = (props: Props) => {
   )
 }
 
-export default MainSidebar;
+export default Sidebar;

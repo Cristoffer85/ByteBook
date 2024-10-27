@@ -1,5 +1,5 @@
 import React from 'react'
-import MainSidebar from '../../Components/MainSidebar/MainSidebar'
+import MainSidebar from '../../Components/Sidebar/Sidebar'
 
 type Props = {}
 

@@ -7,7 +7,7 @@ import CardList from "../../Components/CardList/CardList";
 import { PortfolioGet } from "../../Models/Portfolio";
 import { portfolioAddAPI, portfolioDeleteAPI, portfolioGetAPI } from "../../Services/PortfolioService";
 import { toast } from "react-toastify";
-import MainSidebar from "../../Components/MainSidebar/MainSidebar";
+import MainSidebar from "../../Components/Sidebar/Sidebar";
 
 interface Props {}
 
