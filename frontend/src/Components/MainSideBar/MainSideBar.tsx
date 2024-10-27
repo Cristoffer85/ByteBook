@@ -1,10 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ImProfile } from "react-icons/im";
-import { FaBalanceScale } from 'react-icons/fa';
-import { GiReceiveMoney } from "react-icons/gi";
-import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { useAuth } from '../../Context/useAuth';
+import { IoHomeOutline } from "react-icons/io5";
+import { LiaForumbee } from "react-icons/lia";
+import { AiOutlineStock } from "react-icons/ai";
 
 type Props = {}
 
@@ -20,22 +18,20 @@ const MainSidebar = (props: Props) => {
         <div className="flex bg-white flex-col items-stretch opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full">
           <div className="md:flex-col md:min-w-full flex flex-col list-none">
             {/* Home */}
-            <Link to='home' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+            <Link to='/home' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+              <IoHomeOutline />
               <i className="fas fa-home"></i>
               <h6 className='ml-3'>Home</h6>
             </Link>
-            {/* About */}
-            <Link to='about' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+            {/* Forum */}
+            <Link to='/forum' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+              <LiaForumbee />
               <i className="fas fa-info"></i>
-              <h6 className='ml-3'>About</h6>
-            </Link>
-            {/* Services */}
-            <Link to='services' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
-              <i className="fas fa-concierge-bell"></i>
-              <h6 className='ml-3'>Services</h6>
+              <h6 className='ml-3'>Forum</h6>
             </Link>
             {/* Contact */}
             <Link to='contact' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+              
               <i className="fas fa-envelope"></i>
               <h6 className='ml-3'>Contact</h6>
             </Link>
@@ -44,6 +40,7 @@ const MainSidebar = (props: Props) => {
                 <>
                     {/* Finance */}
                     <Link to='/finance' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
+                    <AiOutlineStock />
                     <i className="fas fa-home"></i>
                     <h6 className='ml-3'>Finance</h6>
                     </Link>
