@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
             {path: "login", element: <LoginPage />},
             {path: "register", element: <RegisterPage />},
             {path: "forum", element: <ForumPage />},
-            {path: "chat", element: <ChatPage />},
+            {path: "chat", element: <ProtectedRoute><ChatPage /></ProtectedRoute>},
             {path: "finance", element: <ProtectedRoute><FinancePage /></ProtectedRoute>},
             {path: "contact", element: <ContactPage />},
             {path: "design-guide", element: <DesignPage />},
