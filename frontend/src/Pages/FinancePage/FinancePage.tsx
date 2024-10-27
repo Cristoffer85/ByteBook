@@ -7,6 +7,7 @@ import CardList from "../../Components/CardList/CardList";
 import { PortfolioGet } from "../../Models/Portfolio";
 import { portfolioAddAPI, portfolioDeleteAPI, portfolioGetAPI } from "../../Services/PortfolioService";
 import { toast } from "react-toastify";
+import MainSidebar from "../../Components/MainSidebar/MainSidebar";
 
 interface Props {}
 
@@ -53,7 +54,7 @@ const FinancePage = (props: Props) => {
     e.preventDefault();
     portfolioDeleteAPI(e.target[0].value)
     .then((res) => {
-      if(res?.status == 200) {
+      if(res?.status === 200) {
         toast.success("Stock deleted from portfolio!");
         getPortfolio();
       }
@@ -72,12 +73,15 @@ const FinancePage = (props: Props) => {
   };
   
   return (
-    <div className="App">
-    <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange}/>
-    <ListPortfolio portfolioValues={portfolioValues!} onPortfolioDelete={onPortfolioDelete}/>
-    <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate}/>
-    {serverError && <h1>Unable to connect to API</h1>}
-</div>
+    <div className="w-full relative flex h-screen overflow-hidden">
+      <MainSidebar />
+      <div className="flex-1 p-4 ml-64 overflow-y-auto">
+        <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange}/>
+        <ListPortfolio portfolioValues={portfolioValues!} onPortfolioDelete={onPortfolioDelete}/>
+        <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate}/>
+        {serverError && <h1>Unable to connect to API</h1>}
+      </div>
+    </div>
 )}
 
 export default FinancePage

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MdOutlineContactPhone } from "react-icons/md";
 
 interface Props {}
 
@@ -10,10 +11,10 @@ const Footer = (props: Props) => {
         <div className="flex-1 text-center">
           <p>© 2024 ByteBook. All rights reserved.</p>
         </div>
-        <div className="flex-1 text-right">
-          <Link to='contact' className="text-blueGray-500 text-medium uppercase font-bold no-underline">
-            <i className="fas fa-envelope"></i>
-            <span className='ml-3'>Contact</span>
+        <div className="flex-1 flex justify-end">
+          <Link to='contact' className="text-blueGray-500 text-medium uppercase font-bold no-underline flex items-center">
+            <MdOutlineContactPhone className="mr-2" />
+            <span>Contact</span>
           </Link>
         </div>
       </div>

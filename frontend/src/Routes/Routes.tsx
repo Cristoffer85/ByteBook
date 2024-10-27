@@ -13,12 +13,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import HeroPage from "../Pages/HeroPage/HeroPage";
 import FinancePage from "../Pages/FinancePage/FinancePage";
 
-{/* To add a protectedRoute/HOC to any element/route, do:
-
-{path: "search", element: <ProtectedRoute><SearchPage /></ProtectedRoute>},    
-
-*/}
-
 export const router = createBrowserRouter([
     {
         path: "/",
