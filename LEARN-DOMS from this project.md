@@ -51,4 +51,12 @@ Potential issues: Can cause 401 if not variable is included rightly
 - Added in Program.cs and code:
     * Swagger (opens up automatically and configured when running the server)
 
+-------------------------------------------------
+
+** Search in VS Code (Ctrl+Shift+F) is a very good function to find and alter code your way, if you by chance forgot the name of a class or function
+- And yes it is human to forget about one class and where that specific function was when the application starts to grow, and +20 classes and subfolders etc
+
+-------------------------------------------------
+
+**
 
