@@ -17,6 +17,9 @@ const Sidebar = (props: Props) => {
       <div className="flex-col min-h-full px-0 flex flex-wrap items-center justify-between w-full mx-auto overflow-y-auto overflow-x-hidden">
         <div className="flex bg-white flex-col items-stretch opacity-100 relative mt-4 overflow-y-auto overflow-x-hidden h-auto z-40 items-center flex-1 rounded w-full">
           <div className="md:flex-col md:min-w-full flex flex-col list-none">
+
+            {/*Is Not Logged In*/}
+            <>
             {/* Home */}
             <Link to='/home' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
               <IoHomeOutline />
@@ -35,6 +38,7 @@ const Sidebar = (props: Props) => {
               <i className="fas fa-info"></i>
               <h6 className='ml-3'>Chat</h6>
             </Link>
+            </>
 
             {/* Blank Row */}
             <div className="h-6"></div>
