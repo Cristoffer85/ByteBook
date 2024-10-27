@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar';
 import { UserProvider } from './Context/useAuth';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Outlet />
       <ToastContainer />
+      <Footer />
     </UserProvider>
     </>
   );

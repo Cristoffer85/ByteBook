@@ -29,12 +29,6 @@ const MainSidebar = (props: Props) => {
               <i className="fas fa-info"></i>
               <h6 className='ml-3'>Forum</h6>
             </Link>
-            {/* Contact */}
-            <Link to='contact' className="flex md:min-w-full text-blueGray-500 text-medium uppercase font-bold block pt--1 pb-4 no-underline">
-              
-              <i className="fas fa-envelope"></i>
-              <h6 className='ml-3'>Contact</h6>
-            </Link>
 
             {isLoggedIn() ? (
                 <>

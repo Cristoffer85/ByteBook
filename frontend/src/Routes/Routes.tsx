@@ -28,11 +28,11 @@ export const router = createBrowserRouter([
             {path: "login", element: <LoginPage />},
             {path: "home", element: <HomePage />},
             {path: "register", element: <RegisterPage />},
-            {path: "finance", element: <FinancePage />},
+            {path: "finance", element: <ProtectedRoute><FinancePage /></ProtectedRoute>},
             {path: "design-guide", element: <DesignPage />},
             {
                 path: "company/:ticker", 
-                element: <CompanyPage />, 
+                element: <ProtectedRoute><CompanyPage /></ProtectedRoute>, 
                 children: [
                     { path: "company-profile", element: <CompanyProfile /> },
                     { path: "income-statement", element: <IncomeStatement /> },
