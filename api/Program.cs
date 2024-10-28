@@ -11,12 +11,10 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Configures Swagger in use with Application. Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
@@ -45,16 +43,19 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+// Adds newtonSoft for Json handling
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 
+// Service for connecting to SqlServer 2022
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// Services for Password requirements among others
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
     options.Password.RequireDigit = true;
@@ -65,6 +66,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDBContext>();
 
+// Services for Authentication, Authorization and role-based Claims
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme =
@@ -93,6 +95,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
 });
 
+// Services for Interfaces, Repositories and Services
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -103,7 +106,7 @@ builder.Services.AddHttpClient<IMFPService, FMPService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Starts Swagger for use when development
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -112,6 +115,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Starts the CORS Cross-origins use with frontend app
 app.UseCors(x => x
      .AllowAnyMethod()
      .AllowAnyHeader()
@@ -124,7 +128,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Seed the admin user
+// Generates a hardcoded Admin by application startup
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
