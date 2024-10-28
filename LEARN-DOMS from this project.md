@@ -61,3 +61,18 @@ Potential issues: Can cause 401 if not variable is included rightly
 ** Props is nice (isLoggedIn.. + etc) (And actually quite that easy)
 - Yeah, really
 
+-------------------------------------------------
+
+** The ? value in models = Yes, remember that
+- When creating or updating the migrations to the database related to the IdentityUser (used in Entity Framework Identity, base), or any other related model,
+  remember to have the ? after variable definition (string? MiddleName) to not have to specify that upon registration endpoint etc, it can be NULL
+
+-------------------------------------------------
+
+** CLOSE AND RESTART SERVER
+- Very good learndom to have and utilize. Sometimes a crappy error you absolutely cannot resolve, may just be that the server needs a restart, when there is logically, 
+  nothing actual else to alter?
+  
+-------------------------------------------------
+
+**

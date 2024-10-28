@@ -4,6 +4,7 @@ using System.Text;
 using api.Interfaces;
 using api.Models;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity;
 
 namespace api.Services
 {
@@ -11,11 +12,15 @@ namespace api.Services
     {
         private readonly IConfiguration _config;
         private readonly SymmetricSecurityKey _key;
-        public TokenService(IConfiguration config)
+        private readonly UserManager<AppUser> _userManager;
+
+        public TokenService(IConfiguration config, UserManager<AppUser> userManager)
         {
             _config = config;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SigningKey"]));
+            _userManager = userManager;
         }
+
         public string CreateToken(AppUser user)
         {
             var claims = new List<Claim>
@@ -23,6 +28,9 @@ namespace api.Services
                 new(JwtRegisteredClaimNames.Email, user.Email),
                 new(JwtRegisteredClaimNames.GivenName, user.UserName)
             };
+
+            var roles = _userManager.GetRolesAsync(user).Result;
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 

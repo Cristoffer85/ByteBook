@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Data
 {
-    public class ApplicationDBContext(DbContextOptions dbContextOptions) : IdentityDbContext<AppUser>(dbContextOptions)
+    public class ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : IdentityDbContext<AppUser>(options)
     {
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -27,17 +27,10 @@ namespace api.Data
                 .WithMany(u => u.Portfolios)
                 .HasForeignKey(p => p.StockId);
 
-
             List<IdentityRole> roles =
             [
-                new() {
-                    Name = "Admin", 
-                    NormalizedName = "ADMIN" 
-                },
-                new() {
-                    Name = "User", 
-                    NormalizedName = "USER" 
-                }
+                new() { Name = "Admin", NormalizedName = "ADMIN" },
+                new() { Name = "User", NormalizedName = "USER" }
             ];
             builder.Entity<IdentityRole>().HasData(roles);
         }

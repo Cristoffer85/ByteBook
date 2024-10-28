@@ -26,7 +26,7 @@ namespace api.Controllers
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
                 
-            var stocks = await _stockRepo.GetAllAsync(query);           // ToList() is a method that converts the data into a list
+            var stocks = await _stockRepo.GetAllAsync(query);                    // ToList() is a method that converts the data into a list
             
             var stockDto = stocks.Select(s => s.ToStockDto()).ToList();          // Select() is a method that selects the stock and maps it to the dto
             
