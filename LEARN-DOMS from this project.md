@@ -58,5 +58,6 @@ Potential issues: Can cause 401 if not variable is included rightly
 
 -------------------------------------------------
 
-**
+** Props is nice (isLoggedIn.. + etc) (And actually quite that easy)
+- Yeah, really
 
