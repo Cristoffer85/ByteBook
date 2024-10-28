@@ -15,6 +15,7 @@ import FinancePage from "../Pages/FinancePage/FinancePage";
 import ContactPage from "../Pages/ContactPage/ContactPage";
 import ForumPage from "../Pages/ForumPage/ForumPage";
 import ChatPage from "../Pages/ChatPage/ChatPage";
+import ProfilePage from "../Pages/ProfilePage/ProfilePage";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
             {path: "home", element: <HomePage />},
             {path: "login", element: <LoginPage />},
             {path: "register", element: <RegisterPage />},
+            {path: "profile", element: <ProtectedRoute><ProfilePage /></ProtectedRoute>},
             {path: "forum", element: <ForumPage />},
             {path: "chat", element: <ProtectedRoute><ChatPage /></ProtectedRoute>},
             {path: "finance", element: <ProtectedRoute><FinancePage /></ProtectedRoute>},

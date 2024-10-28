@@ -7,7 +7,7 @@ import CardList from "../../Components/CardList/CardList";
 import { PortfolioGet } from "../../Models/Portfolio";
 import { portfolioAddAPI, portfolioDeleteAPI, portfolioGetAPI } from "../../Services/PortfolioService";
 import { toast } from "react-toastify";
-import MainSidebar from "../../Components/Sidebar/Sidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 
 interface Props {}
 
@@ -74,7 +74,7 @@ const FinancePage = (props: Props) => {
   
   return (
     <div className="w-full relative flex h-screen overflow-hidden">
-      <MainSidebar />
+      <Sidebar />
       <div className="flex-1 p-4 ml-64 overflow-y-auto">
         <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange}/>
         <ListPortfolio portfolioValues={portfolioValues!} onPortfolioDelete={onPortfolioDelete}/>
