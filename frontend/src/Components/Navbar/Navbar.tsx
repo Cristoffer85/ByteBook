@@ -16,7 +16,7 @@ const Navbar = (props: Props) => {
         {isLoggedIn() ? (
         <div className="hidden lg:flex items-center space-x-2 text-back">
             <div>Welcome {user?.userName}!</div>
-            <Link to="/profile" className="hover:text-darkBlue flex items-center">
+            <Link to="/profile" title="Click me to get to your personal profile page!" className="hover:text-darkBlue flex items-center">
               <RiAccountCircleLine className="mr-2" />
             </Link>
             <a onClick={logout} className="px-8 py-3 font-bold rounded text-white bg-lightGreen hover:opacity-70">Logout</a>
