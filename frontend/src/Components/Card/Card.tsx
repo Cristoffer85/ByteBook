@@ -1,7 +1,6 @@
 import { SyntheticEvent } from 'react';
 import { CompanySearch } from '../../company';
 import AddPortfolio from '../Portfolio/AddPortfolio/AddPortfolio';
-import './Card.css'
 import { Link } from 'react-router-dom';
 
 interface Props {
