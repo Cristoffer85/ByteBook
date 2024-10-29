@@ -296,3 +296,4 @@ C:\Projects\Csharp\ByteBook\api\obj\Debug\net8.0\refint\api.dll
 C:\Projects\Csharp\ByteBook\api\obj\Debug\net8.0\api.pdb
 C:\Projects\Csharp\ByteBook\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Projects\Csharp\ByteBook\api\obj\Debug\net8.0\ref\api.dll
+C:\Projects\Csharp\ByteBook\api\bin\Debug\net8.0\api.staticwebassets.runtime.json

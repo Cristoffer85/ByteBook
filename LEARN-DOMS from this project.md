@@ -82,4 +82,15 @@ Potential issues: Can cause 401 if not variable is included rightly
   
 -------------------------------------------------
 
+** Adding or removing a variable between backend/frontend, all simple actions needed:
+- Repository (Like UserProfileRepository)
+- Model      (Like AppUser)
+- Dto        (Like UserProfile)
+    - Migrations last to the database, (dotnet ef migrations add AddFavouritePetToAppUser) and 
+    - Database update                  (dotnet ef database update)
+
+Thats actually all thats needed, Simple and neat and cool huh? :)
+
+-------------------------------------------------
+
 **

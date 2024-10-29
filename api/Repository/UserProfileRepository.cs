@@ -19,6 +19,7 @@ namespace api.Repository
                     Email = u.Email,
                     FirstName = u.FirstName,
                     LastName = u.LastName,
+                    FavouritePet = u.FavouritePet,
                     AvatarUrl = u.AvatarUrl
                 }).ToListAsync();
         }
@@ -35,6 +36,7 @@ namespace api.Repository
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
+                FavouritePet = user.FavouritePet,
                 AvatarUrl = user.AvatarUrl
             };
         }
@@ -48,6 +50,7 @@ namespace api.Repository
             user.Email = userProfileDto.Email;
             user.FirstName = userProfileDto.FirstName;
             user.LastName = userProfileDto.LastName;
+            user.FavouritePet = userProfileDto.FavouritePet;
             user.AvatarUrl = userProfileDto.AvatarUrl;
 
             await _context.SaveChangesAsync();
