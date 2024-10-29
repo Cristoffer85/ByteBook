@@ -39,6 +39,13 @@ Potential issues: Can cause 401 if not variable is included rightly
 
 ** All external packages (like npm toastify, spinners etc) installed in this project are located in the
 - Frontend/React: package.json, under dependencies. All beautifully listed there.
+    
+    ** Examples: 
+    * Material UI (Big suite of different adds to react)
+    * React Icons
+    * Toastify
+    * Yup
+
 - Backend/.NET: In NUGET (Extension installed via plugin) check installed tab - all listed there
 
 - Extensions installed for this project:
