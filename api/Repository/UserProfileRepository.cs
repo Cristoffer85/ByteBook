@@ -18,7 +18,8 @@ namespace api.Repository
                     UserName = u.UserName,
                     Email = u.Email,
                     FirstName = u.FirstName,
-                    LastName = u.LastName
+                    LastName = u.LastName,
+                    AvatarUrl = u.AvatarUrl
                 }).ToListAsync();
         }
 
@@ -33,7 +34,8 @@ namespace api.Repository
                 UserName = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                AvatarUrl = user.AvatarUrl
             };
         }
 
@@ -46,6 +48,7 @@ namespace api.Repository
             user.Email = userProfileDto.Email;
             user.FirstName = userProfileDto.FirstName;
             user.LastName = userProfileDto.LastName;
+            user.AvatarUrl = userProfileDto.AvatarUrl;
 
             await _context.SaveChangesAsync();
             return userProfileDto;
@@ -59,6 +62,27 @@ namespace api.Repository
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<string> UploadAvatarAsync(string userName, IFormFile avatar)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == userName);
+            if (user == null) return null;
+
+            var uploads = Path.Combine("wwwroot", "uploads");
+            if (!Directory.Exists(uploads))
+                Directory.CreateDirectory(uploads);
+
+            var filePath = Path.Combine(uploads, avatar.FileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await avatar.CopyToAsync(stream);
+            }
+
+            user.AvatarUrl = $"/uploads/{avatar.FileName}";
+            await _context.SaveChangesAsync();
+
+            return user.AvatarUrl;
         }
     }
 }

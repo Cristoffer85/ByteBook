@@ -1,21 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using api.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
 using api.Dtos.Account;
 
 namespace api.Controllers
 {
     [Route("api/profile")]
     [ApiController]
-    public class UserProfileController : ControllerBase
+    public class UserProfileController(IUserProfileRepository userProfileRepo) : ControllerBase
     {
-        private readonly IUserProfileRepository _userProfileRepo;
-
-        public UserProfileController(IUserProfileRepository userProfileRepo)
-        {
-            _userProfileRepo = userProfileRepo;
-        }
+        private readonly IUserProfileRepository _userProfileRepo = userProfileRepo;
 
         [HttpGet]
         [Authorize(Policy = "AdminOnly")]
@@ -52,6 +46,19 @@ namespace api.Controllers
             var result = await _userProfileRepo.DeleteAsync(userName);
             if (!result) return NotFound();
             return NoContent();
+        }
+    
+        [HttpPost("{userName}/avatar")]
+        [Authorize]
+        public async Task<IActionResult> UploadAvatar(string userName, IFormFile avatar)
+        {
+            if (avatar == null || avatar.Length == 0)
+                return BadRequest("No file uploaded.");
+
+            var avatarUrl = await _userProfileRepo.UploadAvatarAsync(userName, avatar);
+            if (avatarUrl == null) return NotFound();
+
+            return Ok(new { AvatarUrl = avatarUrl });
         }
     }
 }

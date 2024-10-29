@@ -8,5 +8,6 @@ namespace api.Interfaces
         Task<UserProfileDto> GetByUserNameAsync(string userName);
         Task<UserProfileDto> UpdateAsync(UserProfileDto userProfileDto);
         Task<bool> DeleteAsync(string userName);
+        Task<string> UploadAvatarAsync(string userName, IFormFile avatar);
     }
 }
