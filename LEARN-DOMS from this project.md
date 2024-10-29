@@ -20,7 +20,10 @@ Potential issues: Can cause 401 if not variable is included rightly
 -------------------------------------------------
 
 ** TailwindCss is nice
-- Feel the easiness of it seems nice. Just have to understand it a bit more.
+- Feel the easiness of it seems nice. Just have to understand it a bit more. 
+
+- Might look a little bit messy at first with the Styling*-code in the components/tsx files but after a while you get used to it and think its
+  actually quite nice not having to deal with the separated logic in another 'copied-name' css file of the same class. You have all design in one file, easier navigating and altering and more comprehensive when already + 50 classes to hold check of.
 
 -------------------------------------------------
 
