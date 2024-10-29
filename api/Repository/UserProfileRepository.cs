@@ -76,13 +76,14 @@ namespace api.Repository
             if (!Directory.Exists(uploads))
                 Directory.CreateDirectory(uploads);
 
-            var filePath = Path.Combine(uploads, avatar.FileName);
+            var fileName = $"{Guid.NewGuid()}_{avatar.FileName}"; // Ensure unique file names
+            var filePath = Path.Combine(uploads, fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await avatar.CopyToAsync(stream);
             }
 
-            user.AvatarUrl = $"/uploads/{avatar.FileName}";
+            user.AvatarUrl = $"/uploads/{fileName}"; // Ensure the URL is correct
             await _context.SaveChangesAsync();
 
             return user.AvatarUrl;

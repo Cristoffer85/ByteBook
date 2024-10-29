@@ -16,4 +16,5 @@ export type UserProfileHandling = {
     firstName: string;
     lastName: string;
     favouritePet: string;
+    avatarUrl: string;
 };

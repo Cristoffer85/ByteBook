@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../../Components/Sidebar/Sidebar';
-import { getUserProfileByUsername, updateUserProfile } from '../../Services/UserProfileService';
+import { getUserProfileByUsername, updateUserProfile, uploadUserProfileAvatar } from '../../Services/UserProfileService';
 import { UserProfileHandling } from '../../Models/User';
 import { useAuth } from '../../Context/useAuth';
+import { Avatar, Button, TextField, IconButton } from '@mui/material';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 type Props = {};
 
@@ -16,8 +18,11 @@ const ProfilePage = (props: Props) => {
     email: '',
     firstName: '',
     lastName: '',
-    favouritePet: ''
+    favouritePet: '',
+    avatarUrl: ''
   });
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -33,17 +38,36 @@ const ProfilePage = (props: Props) => {
     fetchUserProfile();
   }, [user]);
 
+  // Helper method to handle input changes, makes code more readable and DRY
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setAvatarFile(file);
+      setAvatarPreview(URL.createObjectURL(file)); // Preview image
+    }
+  };
+
   const handleUpdateProfile = async (e: React.FormEvent) => {
     e.preventDefault();
     if (user?.userName) {
-      const updatedProfile = await updateUserProfile(user.userName, formData);
+      let avatarUrl = formData.avatarUrl;
+
+      if (avatarFile) {
+        const uploadedAvatarUrl = await uploadUserProfileAvatar(user.userName, avatarFile);
+        avatarUrl = uploadedAvatarUrl || avatarUrl;
+      }
+
+      const updatedProfile = await updateUserProfile(user.userName, { ...formData, avatarUrl });
       if (updatedProfile) {
-        setUserProfile(updatedProfile);
+        const refreshedProfile = await getUserProfileByUsername(user.userName);
+        if (refreshedProfile) {
+          setUserProfile(refreshedProfile);
+        }
         setIsEditing(false);
       }
     }
@@ -53,116 +77,94 @@ const ProfilePage = (props: Props) => {
     <div className="w-full relative flex h-screen overflow-hidden">
       <Sidebar />
       <div className="flex-1 p-4 ml-64 overflow-y-auto">
-        <h1 className="text-2xl mb-4">Profilepage</h1>
+        <h1 className="text-2xl mb-4">Profile Page</h1>
 
-        {/*User Information*/}
         {userProfile && !isEditing && (
           <div className="bg-white shadow rounded p-4">
+            <Avatar src={`http://localhost:5167${userProfile.avatarUrl}`} alt={userProfile.userName} sx={{ width: 100, height: 100 }} />
             <h2 className="text-xl font-bold mb-2">{userProfile.userName}</h2>
             <p className="mb-2"><strong>Email:</strong> {userProfile.email}</p>
             <p className="mb-2"><strong>First Name:</strong> {userProfile.firstName}</p>
             <p className="mb-2"><strong>Last Name:</strong> {userProfile.lastName}</p>
             <p className="mb-2"><strong>Favourite Pet:</strong> {userProfile.favouritePet}</p>
-            <button
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-              onClick={() => setIsEditing(true)}
-            >
+            <Button variant="contained" color="primary" onClick={() => setIsEditing(true)}>
               Edit Profile
-            </button>
+            </Button>
           </div>
         )}
 
-        {/*Editing mode of Profile*/}
         {isEditing && (
           <form className="bg-white shadow rounded p-4" onSubmit={handleUpdateProfile}>
-            {/*Username*/}
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="userName">
-                Username
-              </label>
               <input
-                type="text"
+                accept="image/*"
+                style={{ display: 'none' }}
+                id="icon-button-file"
+                type="file"
+                onChange={handleAvatarChange}
+              />
+              <label htmlFor="icon-button-file">
+                <IconButton color="primary" aria-label="upload picture" component="span">
+                  <PhotoCamera />
+                </IconButton>
+              </label>
+              {avatarPreview && (
+                <Avatar src={avatarPreview} alt="Avatar Preview" sx={{ width: 100, height: 100, mt: 2 }} />
+              )}
+            </div>
+            <div className="mb-4">
+              <TextField
+                label="Username"
                 name="userName"
-                id="userName"
                 value={formData.userName}
                 onChange={handleInputChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200"
+                fullWidth
                 disabled
               />
             </div>
-            {/*Email*/}
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="email"
+              <TextField
+                label="Email"
                 name="email"
-                id="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                fullWidth
               />
             </div>
-            {/*First Name*/}
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
-                First Name
-              </label>
-              <input
-                type="text"
+              <TextField
+                label="First Name"
                 name="firstName"
-                id="firstName"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                fullWidth
               />
             </div>
-            {/*Last Name*/}
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
-                Last Name
-              </label>
-              <input
-                type="text"
+              <TextField
+                label="Last Name"
                 name="lastName"
-                id="lastName"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                fullWidth
               />
             </div>
-            {/*Favourite Pet*/}
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
-                Favourite Pet
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                value={formData.lastName}
+              <TextField
+                label="Favourite Pet"
+                name="favouritePet"
+                value={formData.favouritePet}
                 onChange={handleInputChange}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                fullWidth
               />
             </div>
-
             <div className="flex items-center justify-between">
-              {/*Save Button*/}
-              <button
-                type="submit"
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
-              >
+              <Button type="submit" variant="contained" color="primary">
                 Save
-              </button>
-              {/*Cancel Button*/}
-              <button
-                type="button"
-                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
-                onClick={() => setIsEditing(false)}
-              >
+              </Button>
+              <Button variant="contained" color="secondary" onClick={() => setIsEditing(false)}>
                 Cancel
-              </button>
+              </Button>
             </div>
           </form>
         )}

@@ -55,3 +55,20 @@ export const deleteUserProfile = async (username: string) => {
     handleError(error);
   }
 };
+
+export const uploadUserProfileAvatar = async (username: string, avatar: File) => {
+  try {
+    const formData = new FormData();
+    formData.append("avatar", avatar);
+
+    const response = await axios.post<{ avatarUrl: string }>(`${api}${username}/avatar`, formData, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response.data.avatarUrl;
+  } catch (error) {
+    handleError(error);
+  }
+};

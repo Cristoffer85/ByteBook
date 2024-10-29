@@ -114,6 +114,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 // Starts the CORS Cross-origins use with frontend app
 app.UseCors(x => x
