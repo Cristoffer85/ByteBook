@@ -15,7 +15,8 @@ const ProfilePage = (props: Props) => {
     userName: '',
     email: '',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    favouritePet: ''
   });
 
   useEffect(() => {
@@ -61,6 +62,7 @@ const ProfilePage = (props: Props) => {
             <p className="mb-2"><strong>Email:</strong> {userProfile.email}</p>
             <p className="mb-2"><strong>First Name:</strong> {userProfile.firstName}</p>
             <p className="mb-2"><strong>Last Name:</strong> {userProfile.lastName}</p>
+            <p className="mb-2"><strong>Favourite Pet:</strong> {userProfile.favouritePet}</p>
             <button
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
               onClick={() => setIsEditing(true)}
@@ -120,6 +122,20 @@ const ProfilePage = (props: Props) => {
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
                 Last Name
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            {/*Favourite Pet*/}
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
+                Favourite Pet
               </label>
               <input
                 type="text"

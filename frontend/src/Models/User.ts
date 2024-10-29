@@ -15,4 +15,5 @@ export type UserProfileHandling = {
     email: string;
     firstName: string;
     lastName: string;
+    favouritePet: string;
 };

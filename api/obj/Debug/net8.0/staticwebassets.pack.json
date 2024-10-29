@@ -1,18 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\Foto CV 2.jpg",
-      "PackagePath": "staticwebassets\\uploads\\Foto CV 2.jpg"
-    },
-    {
-      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\Foto CV.jpg",
-      "PackagePath": "staticwebassets\\uploads\\Foto CV.jpg"
-    },
-    {
-      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\Guldbojen intyg - Tomt.jpg",
-      "PackagePath": "staticwebassets\\uploads\\Guldbojen intyg - Tomt.jpg"
-    },
-    {
       "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\Nyaste (2023, tror jag).jpeg",
       "PackagePath": "staticwebassets\\uploads\\Nyaste (2023, tror jag).jpeg"
     },
