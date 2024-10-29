@@ -96,4 +96,6 @@ Thats actually all thats needed, Simple and neat and cool huh? :)
 
 -------------------------------------------------
 
-**
+** Saving images to database is not a good idea
+- it will slow down performance tremendously. Save them on the server instead, like now. And only use a stringvariable saved to database to fetch the correct image
+  from the server when correct user is logged in

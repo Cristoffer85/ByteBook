@@ -38,7 +38,6 @@ const ProfilePage = (props: Props) => {
     fetchUserProfile();
   }, [user]);
 
-  // Helper method to handle input changes, makes code more readable and DRY
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -48,7 +47,7 @@ const ProfilePage = (props: Props) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setAvatarFile(file);
-      setAvatarPreview(URL.createObjectURL(file)); // Preview image
+      setAvatarPreview(URL.createObjectURL(file));
     }
   };
 
@@ -94,77 +93,93 @@ const ProfilePage = (props: Props) => {
         )}
 
         {isEditing && (
-          <form className="bg-white shadow rounded p-4" onSubmit={handleUpdateProfile}>
-            <div className="mb-4">
-              <input
-                accept="image/*"
-                style={{ display: 'none' }}
-                id="icon-button-file"
-                type="file"
-                onChange={handleAvatarChange}
-              />
-              <label htmlFor="icon-button-file">
-                <IconButton color="primary" aria-label="upload picture" component="span">
-                  <PhotoCamera />
-                </IconButton>
-              </label>
-              {avatarPreview && (
-                <Avatar src={avatarPreview} alt="Avatar Preview" sx={{ width: 100, height: 100, mt: 2 }} />
-              )}
-            </div>
-            <div className="mb-4">
-              <TextField
-                label="Username"
-                name="userName"
-                value={formData.userName}
-                onChange={handleInputChange}
-                fullWidth
-                disabled
-              />
-            </div>
-            <div className="mb-4">
-              <TextField
-                label="Email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </div>
-            <div className="mb-4">
-              <TextField
-                label="First Name"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </div>
-            <div className="mb-4">
-              <TextField
-                label="Last Name"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </div>
-            <div className="mb-4">
-              <TextField
-                label="Favourite Pet"
-                name="favouritePet"
-                value={formData.favouritePet}
-                onChange={handleInputChange}
-                fullWidth
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <Button type="submit" variant="contained" color="primary">
-                Save
-              </Button>
-              <Button variant="contained" color="secondary" onClick={() => setIsEditing(false)}>
-                Cancel
-              </Button>
+          <form className="relative grid grid-cols-1 gap-4 ml-4 p-4 mb-8 w-full border rounded-lg bg-white shadow-lg" onSubmit={handleUpdateProfile}>
+            <div className="relative flex gap-4">
+              <div className="flex flex-col w-full">
+                {/*Avatar*/}
+                <div className="mb-4">
+                  <input
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    id="icon-button-file"
+                    type="file"
+                    onChange={handleAvatarChange}
+                  />
+                  <label htmlFor="icon-button-file">
+                    <IconButton color="primary" aria-label="upload picture" component="span">
+                      <PhotoCamera />
+                    </IconButton>
+                  </label>
+                  {avatarPreview && (
+                    <Avatar src={avatarPreview} alt="Avatar Preview" sx={{ width: 100, height: 100, mt: 2 }} />
+                  )}
+                </div>
+                {/*User name*/}
+                <div className="mb-4">
+                  <TextField
+                    label="Username"
+                    name="userName"
+                    value={formData.userName}
+                    onChange={handleInputChange}
+                    fullWidth
+                    disabled
+                    InputProps={{
+                      style: {
+                        backgroundColor: 'lightgray'
+                      }
+                    }}
+                  /> 
+                </div>
+                {/*Email*/}
+                <div className="mb-4">
+                  <TextField
+                    label="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    fullWidth
+                  />
+                </div>
+                {/*First Name*/}
+                <div className="mb-4">
+                  <TextField
+                    label="First Name"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    fullWidth
+                  />
+                </div>
+                {/*Last Name*/}
+                <div className="mb-4">
+                  <TextField
+                    label="Last Name"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    fullWidth
+                  />
+                </div>
+                {/*Favourite Pet*/}
+                <div className="mb-4">
+                  <TextField
+                    label="Favourite Pet"
+                    name="favouritePet"
+                    value={formData.favouritePet}
+                    onChange={handleInputChange}
+                    fullWidth
+                  />
+                </div>
+                {/*Save and Cancel Buttons*/}
+                <div className="flex items-center justify-between">
+                  <Button type="submit" variant="contained" style={{ backgroundColor: 'green', color: 'white' }}>
+                    Save
+                  </Button>
+                  <Button variant="contained" style={{ backgroundColor: 'grey', color: 'white' }} onClick={() => setIsEditing(false)}>
+                    Cancel
+                  </Button>
+                </div>
+              </div>
             </div>
           </form>
         )}
