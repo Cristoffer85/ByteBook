@@ -1,8 +1,24 @@
 {
   "Files": [
     {
+      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\043aa6d0-0441-4535-ab29-734ac4b6a292_2022-11-05 (6).png",
+      "PackagePath": "staticwebassets\\uploads\\043aa6d0-0441-4535-ab29-734ac4b6a292_2022-11-05 (6).png"
+    },
+    {
+      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\0763e36d-7460-4f3c-a2b3-c19dc7e9fe08_2022-11-28 (5).png",
+      "PackagePath": "staticwebassets\\uploads\\0763e36d-7460-4f3c-a2b3-c19dc7e9fe08_2022-11-28 (5).png"
+    },
+    {
+      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\1ca3ae3f-2f06-43d7-ab30-672e030c4f9f_Nyaste (2023, tror jag).jpeg",
+      "PackagePath": "staticwebassets\\uploads\\1ca3ae3f-2f06-43d7-ab30-672e030c4f9f_Nyaste (2023, tror jag).jpeg"
+    },
+    {
       "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\2bab4c18-e7a5-45b1-93fd-5852f4f3bfa0_2022-11-05 (6).png",
       "PackagePath": "staticwebassets\\uploads\\2bab4c18-e7a5-45b1-93fd-5852f4f3bfa0_2022-11-05 (6).png"
+    },
+    {
+      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\3e6764ee-cded-485d-be83-c5f22e463ce5_Nyaste (2023, tror jag).jpeg",
+      "PackagePath": "staticwebassets\\uploads\\3e6764ee-cded-485d-be83-c5f22e463ce5_Nyaste (2023, tror jag).jpeg"
     },
     {
       "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\45ec6a4f-7446-443f-bfde-cf7f2a2a63fe_2022-11-27.png",
@@ -27,6 +43,10 @@
     {
       "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\ace97b75-3437-49e5-bc01-a1baa58b5ba5_2022-11-28.png",
       "PackagePath": "staticwebassets\\uploads\\ace97b75-3437-49e5-bc01-a1baa58b5ba5_2022-11-28.png"
+    },
+    {
+      "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\ae21230f-3c45-4874-b0b5-4aacee833230_2022-11-28 (6).png",
+      "PackagePath": "staticwebassets\\uploads\\ae21230f-3c45-4874-b0b5-4aacee833230_2022-11-28 (6).png"
     },
     {
       "Id": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\b343f66e-5116-4acc-b908-aaed954b61a5_2022-11-28 (6).png",
