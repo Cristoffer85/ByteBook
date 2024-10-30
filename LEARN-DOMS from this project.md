@@ -1,6 +1,14 @@
 ** ALL DESIGNS REGARDING FORMS (Yup + Tailwind)
 - StockCommentForm.tsx holds these current design values (shall be implemented and structured up better on the DesignPage.tsx. Later)
 
+- Later, also check out the current designs there, see exactly how theyre made. See how can make current designs more abstract, scalable
+
+  * Ratiolist
+  * Table
+
+
+- Maybe can make the forms as a component to just insert? Or break it apart a bit to always have the design for forms in an easier clumped-up component to just insert?
+? Hmmm.....
 -------------------------------------------------
 
 ** Differences in import apostrophes:
