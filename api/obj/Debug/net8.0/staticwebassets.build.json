@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "l203XA86U95X6miEX3w7whoOTY6EDgQdNzZ28QI470M=",
+  "Hash": "Q3I3BRcFO4LHSa/zC9VuCZBOXsN54nOcczC61X0F448=",
   "Source": "api",
   "BasePath": "_content/api",
   "Mode": "Default",
@@ -169,6 +169,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\5b662eed-f83d-4918-902c-985f51e5605b_2022-11-05.png"
     },
     {
+      "Identity": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\7391c1e5-dcdc-4a03-a393-88cb46a07b3a_2022-11-28 (5).png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "uploads/7391c1e5-dcdc-4a03-a393-88cb46a07b3a_2022-11-28 (5).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\7391c1e5-dcdc-4a03-a393-88cb46a07b3a_2022-11-28 (5).png"
+    },
+    {
       "Identity": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\751f49e3-413c-482c-8a36-b3d4e2423072_2022-11-27.png",
       "SourceId": "api",
       "SourceType": "Discovered",
@@ -281,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\b9902ee4-3253-49a5-a60e-19f2b4fccd15_2022-11-05 (6).png"
+    },
+    {
+      "Identity": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\ef2eb4aa-28d8-4b38-8a7e-46581c29cb60_2023-01-12 (1).png",
+      "SourceId": "api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\",
+      "BasePath": "_content/api",
+      "RelativePath": "uploads/ef2eb4aa-28d8-4b38-8a7e-46581c29cb60_2023-01-12 (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ef2eb4aa-28d8-4b38-8a7e-46581c29cb60_2023-01-12 (1).png"
     },
     {
       "Identity": "C:\\Projects\\Csharp\\ByteBook\\api\\wwwroot\\uploads\\f914350b-083e-425c-b0a2-d623d2b9a15f_2022-11-05 (6).png",
