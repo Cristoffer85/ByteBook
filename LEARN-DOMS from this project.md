@@ -1,3 +1,8 @@
+** ALL DESIGNS REGARDING FORMS (Yup + Tailwind)
+- StockCommentForm.tsx holds these current design values (shall be implemented and structured up better on the DesignPage.tsx. Later)
+
+-------------------------------------------------
+
 ** Differences in import apostrophes:
 
 - "" is used for importing modules
