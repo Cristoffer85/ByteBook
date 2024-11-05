@@ -3,7 +3,8 @@
 ## Description
 A social media application for developers where they can talk, connect, share common coding problems, view FAQS, help resolve their ever insomia-coderelated problem or just hangout with other developers, make new friends or businessassociates or share fun memes or any other type of media! Have fun!
 
-The application backend is built in C# and ASP.NET8 core and SQL Server as a foundation. It will have a React Frontend.
+The application backend is built in C# and ASP.NET8 core and SQL Server as a foundation. 
+The application frontend is built in React with Typescript as its main script language.
 
 ## Installation
 
